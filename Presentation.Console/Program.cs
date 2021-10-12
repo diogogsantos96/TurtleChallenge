@@ -1,10 +1,15 @@
 ﻿namespace TurtleChallenge
 {
     using Business.Services.Factories;
+
     using Model.Domain;
     using Model.Domain.Parsers;
+
+    using Presentation.Console.Output;
+
     using System;
-    using TurtleChallenge.FileReaders;
+
+    using TurtleChallenge.Input;
 
     public class Program
     {
@@ -16,12 +21,14 @@
                 var moves = new TextReader().Read(args[1]);
                 var movesList = MovesParser.Parse(moves);
 
-                var service = new TurtleChallengeAlgorithmFactory().GetAlgorithm(gameSettings);
-                service.Run();
+                var service = new TurtleChallengeAlgorithmFactory().GetAlgorithm();
+                var result = service.RunAsync(gameSettings, movesList).GetAwaiter().GetResult();
+
+                new ConsoleOutputWriter().Write(AlgorithmResultParser.Parse(result));
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ups! Something went wrong: {ex.Message}");
+                new ConsoleOutputWriter().Write($"Ups! Something went wrong: {ex.Message}");
             }
         }
     }

@@ -7,7 +7,7 @@
     {
         public Tuple<int, int> BoardSize { get; set; }
         public Tuple<int, int> StartingPoint { get; set; }
-        public string Direction { get; set; }
+        public string StartingDirection { get; set; }
         public Tuple<int, int> ExitPoint { get; set; }
         public HashSet<Tuple<int, int>> Mines { get; set; }
 

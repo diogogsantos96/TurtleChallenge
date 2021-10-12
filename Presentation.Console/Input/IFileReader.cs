@@ -1,4 +1,4 @@
-﻿namespace TurtleChallenge.FileReaders
+﻿namespace TurtleChallenge.Input
 {
     public interface IFileReader<T>
     {

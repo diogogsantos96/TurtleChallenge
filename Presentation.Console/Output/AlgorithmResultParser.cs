@@ -11,7 +11,7 @@
             { EAlgorithmResult.MineHit, "Mine Hit!"},
             { EAlgorithmResult.OutOfBounds, "Wall Hit!"},
             { EAlgorithmResult.Success, "Success!"},
-            { EAlgorithmResult.MineHit, "Still in danger!"},
+            { EAlgorithmResult.Nothing, "Still in danger!"},
         };
 
         public static string Parse(EAlgorithmResult result)

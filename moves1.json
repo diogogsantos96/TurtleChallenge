@@ -1,0 +1,7 @@
+[
+  "m,r,r,r,m", //mine
+  "r,r,r,m,m,r,m", //success
+  "m,m,r,r,m,m,m", //out of bounds
+  "m,m,r,r,r,m,m,m", //mine
+  "r,r,r,m,m" // still in danger
+]

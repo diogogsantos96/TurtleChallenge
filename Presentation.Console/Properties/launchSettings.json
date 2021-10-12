@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Presentation.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "gameSettings1.json moves1.json"
+    }
+  }
+}

@@ -6,7 +6,7 @@
 
     public class Turtle
     {
-        public Tuple<int, int> Position { get; private set; }
+        public Coordinate Position { get; private set; }
         public string Orientation { get; private set; }
 
         public Turtle(GameSettings gameSettings)
@@ -15,14 +15,14 @@
             this.Orientation = gameSettings.StartingDirection;
         }
 
-        public Tuple<int, int> Move()
+        public Coordinate Move()
         {
             this.Position = this.Orientation switch
             {
-                Directions.NORTH => new Tuple<int, int>(this.Position.Item1 - 1, this.Position.Item2),
-                Directions.EAST => new Tuple<int, int>(this.Position.Item1, this.Position.Item2 + 1),
-                Directions.SOUTH => new Tuple<int, int>(this.Position.Item1 + 1, this.Position.Item2),
-                Directions.WEST => new Tuple<int, int>(this.Position.Item1, this.Position.Item2 - 1),
+                Directions.NORTH => new Coordinate(this.Position.X - 1, this.Position.Y),
+                Directions.EAST => new Coordinate(this.Position.X, this.Position.Y + 1),
+                Directions.SOUTH => new Coordinate(this.Position.X + 1, this.Position.Y),
+                Directions.WEST => new Coordinate(this.Position.X, this.Position.Y - 1),
                 _ => throw new HandledException($"Wrong Orientation set on Turtle: {this.Orientation}"),
             };
             return this.Position;

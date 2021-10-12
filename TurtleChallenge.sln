@@ -22,11 +22,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F44AFA0F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Layers", "1 Layers", "{602327FB-CC63-4745-A0AF-DA90BB9C2B54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Console", "Presentation.Console\Presentation.Console.csproj", "{5A903FC6-9125-4722-964E-9979439F2A7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.Console", "Presentation.Console\Presentation.Console.csproj", "{5A903FC6-9125-4722-964E-9979439F2A7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Domain", "Model.Domain\Model.Domain.csproj", "{61018EDC-F96A-4FE1-BEBA-657DA8605C08}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.Services", "Business.Services\Business.Services.csproj", "{67DB73FB-78B4-4BF3-B7D4-614AFBD1082B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestFiles", "TestFiles", "{68F6C422-2D32-444D-A7F8-5939852F133C}"
+	ProjectSection(SolutionItems) = preProject
+		gameSettings1.json = gameSettings1.json
+		moves1.json = moves1.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +66,7 @@ Global
 		{5A903FC6-9125-4722-964E-9979439F2A7C} = {4A523296-FE7F-41FB-80C5-ACB628F7EC39}
 		{61018EDC-F96A-4FE1-BEBA-657DA8605C08} = {99812786-308F-4B84-BCAC-B4107D3FF948}
 		{67DB73FB-78B4-4BF3-B7D4-614AFBD1082B} = {9DFB2D88-719B-400A-987B-CAAA1F72D43F}
+		{68F6C422-2D32-444D-A7F8-5939852F133C} = {ACEC1DEA-EA0D-49BD-90B7-3B5F2C02B665}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA1EE90A-1918-4456-B4A0-3C9579D37544}

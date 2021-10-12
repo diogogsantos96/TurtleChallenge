@@ -23,25 +23,32 @@
             {
                 if (move == 'r')
                     turtle.Rotate();
-                var newPosition = turtle.Move();
-                var result = ValidateNewPosition(gameSettings, newPosition);
-                if (result != EAlgorithmResult.Nothing)
+                else if (move == 'm')
                 {
-                    return Task.FromResult(result);
+                    var newPosition = turtle.Move();
+                    var result = ValidateNewPosition(gameSettings, newPosition);
+                    if (result != EAlgorithmResult.Nothing)
+                    {
+                        return Task.FromResult(result);
+                    }
                 }
+                else throw new UnhandledException($"Invalid move: {move}");
             }
 
             return Task.FromResult(EAlgorithmResult.Nothing);
         }
 
-        private EAlgorithmResult ValidateNewPosition(GameSettings gameSettings, Tuple<int, int> newPosition)
+        private EAlgorithmResult ValidateNewPosition(GameSettings gameSettings, Coordinate newPosition)
         {
-            if (newPosition.Item1 < 1 || newPosition.Item1 > gameSettings.BoardSize.Item1 ||
-               newPosition.Item2 < 1 || newPosition.Item2 > gameSettings.BoardSize.Item2)
+            if (newPosition.X < 1 || newPosition.X > gameSettings.BoardSize.X ||
+               newPosition.Y < 1 || newPosition.Y > gameSettings.BoardSize.Y)
                 return EAlgorithmResult.OutOfBounds;
 
-            if(gameSettings.Mines.Contains(newPosition))
+            if (gameSettings.Mines.Contains(newPosition))
                 return EAlgorithmResult.MineHit;
+
+            if (newPosition.Equals(gameSettings.ExitPoint))
+                return EAlgorithmResult.Success;
 
             return EAlgorithmResult.Nothing;
         }

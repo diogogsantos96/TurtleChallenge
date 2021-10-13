@@ -14,11 +14,16 @@
 
     public class Program
     {
+        private static IOutputWriter outputWriter;
+
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
-                .AddBusinessServices()
+                .AddBusinessDependencies()
+                .AddPresentationDependencies()
                 .BuildServiceProvider();
+
+            outputWriter = serviceProvider.GetRequiredService<IOutputWriter>();
 
             try
             {
@@ -28,21 +33,26 @@
                 var service = serviceProvider.GetRequiredService<ITurtleChallengeAlgorithmFactory>()
                     .GetAlgorithm();
 
-                int index = 1;
-
-                foreach(var sequence in moves)
-                {
-                    var movesList = MovesParser.Parse(sequence);
-
-                    var result = service.RunAsync(gameSettings, movesList).GetAwaiter().GetResult();
-
-                    new ConsoleOutputWriter().Write($"Sequence {index}: {AlgorithmResultParser.Parse(result)}");
-                    index++;
-                }
+                RunSequences(gameSettings, moves, service);
             }
             catch (Exception ex)
             {
-                new ConsoleOutputWriter().Write($"Ups! Something went wrong: {ex.Message}");
+                outputWriter.Write($"Ups! Something went wrong: {ex.Message}");
+            }
+        }
+
+        private static void RunSequences(GameSettings gameSettings, IEnumerable<string> moves, Business.Services.Services.ITurtleChallengeAlgorithm service)
+        {
+            int index = 1;
+
+            foreach (var sequence in moves)
+            {
+                var movesList = MovesParser.Parse(sequence);
+
+                var result = service.RunAsync(gameSettings, movesList).GetAwaiter().GetResult();
+
+                outputWriter.Write($"Sequence {index}: {AlgorithmResultParser.Parse(result)}");
+                index++;
             }
         }
     }

@@ -5,7 +5,7 @@
 
     public static class BusinessBootstrapper
     {
-        public static IServiceCollection AddBusinessServices(this IServiceCollection @this)
+        public static IServiceCollection AddBusinessDependencies(this IServiceCollection @this)
             => @this.AddScoped<ITurtleChallengeAlgorithmFactory, TurtleChallengeAlgorithmFactory>();
     }
 }

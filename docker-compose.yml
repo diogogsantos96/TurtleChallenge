@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  turtleChallenge:
+    image: turtle-challenge
+    container_name: turtle-challenge
+    build:
+      context: .
+      dockerfile: Dockerfile
